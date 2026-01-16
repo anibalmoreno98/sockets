@@ -1,4 +1,4 @@
-package pgvsockets;
+package pgvsockets.clienteServidor;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
