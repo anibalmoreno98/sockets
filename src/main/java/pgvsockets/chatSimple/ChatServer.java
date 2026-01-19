@@ -5,11 +5,25 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Servidor de chat simple multicliente.
+ * <p>
+ * Escucha en el puerto 1234 y crea un hilo {@link ClientHandler} por cada
+ * cliente que se conecta. Mantiene una lista de clientes para permitir
+ * la difusión de mensajes.
+ * </p>
+ */
 public class ChatServer {
 
-    // Lista de clientes conectados
+    /** Lista de clientes conectados al servidor. */
     public static List<ClientHandler> clientes = new ArrayList<>();
 
+    /**
+     * Método principal del servidor. Acepta conexiones entrantes y crea un
+     * hilo para cada cliente conectado.
+     *
+     * @param args No se utilizan argumentos de línea de comandos.
+     */
     public static void main(String[] args) {
         try (ServerSocket server = new ServerSocket(1234)) {
             System.out.println("Servidor de chat escuchando en el puerto 1234...");
@@ -20,7 +34,7 @@ public class ChatServer {
 
                 ClientHandler handler = new ClientHandler(socketCliente);
                 clientes.add(handler);
-                handler.start(); // Lanzar hilo
+                handler.start();
             }
 
         } catch (Exception e) {
@@ -28,7 +42,12 @@ public class ChatServer {
         }
     }
 
-    // Método para enviar un mensaje a todos los clientes
+    /**
+     * Envía un mensaje a todos los clientes excepto al remitente.
+     *
+     * @param mensaje   Texto que se enviará.
+     * @param remitente Cliente que envió el mensaje original.
+     */
     public static void broadcast(String mensaje, ClientHandler remitente) {
         for (ClientHandler cliente : clientes) {
             if (cliente != remitente) {

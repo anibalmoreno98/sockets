@@ -5,13 +5,26 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+ * Clase que gestiona la comunicación con un cliente individual en un servidor Echo multihilo.
+ * Cada instancia se ejecuta en su propio hilo.
+ */
 public class ClientHandler extends Thread {
     private Socket socket;
 
+    /**
+     * Constructor que recibe el socket del cliente.
+     *
+     * @param socket Socket conectado al cliente.
+     */
     public ClientHandler(Socket socket) {
         this.socket = socket;
     }
 
+    /**
+     * Método principal del hilo. Lee mensajes del cliente y los devuelve como respuesta (echo).
+     * Maneja excepciones y cierra el socket al finalizar.
+     */
     @Override
     public void run() {
         try (

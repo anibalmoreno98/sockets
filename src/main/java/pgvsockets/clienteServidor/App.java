@@ -6,10 +6,22 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class App 
-{
-    public static void main(String[] args)
-    {
+/**
+ * Servidor simple que escucha en el puerto 5555 y atiende a un único cliente.
+ * <p>
+ * El servidor acepta una conexión entrante, recibe un mensaje del cliente
+ * y responde con un saludo fijo. Después cierra la conexión.
+ * </p>
+ */
+public class App {
+
+    /**
+     * Método principal del servidor. Crea un {@link ServerSocket} en el puerto 5555,
+     * espera la conexión de un cliente y gestiona el intercambio básico de mensajes.
+     *
+     * @param args No se utilizan argumentos de línea de comandos.
+     */
+    public static void main(String[] args) {
         try {
             ServerSocket socketServidor = new ServerSocket(5555);
             System.out.println("Servidor escuchando en el puerto 5555...");
@@ -18,7 +30,6 @@ public class App
             System.out.println("Cliente conectado");
 
             PrintWriter salida = new PrintWriter(socketCliente.getOutputStream(), true);
-
             BufferedReader entrada = new BufferedReader(
                 new InputStreamReader(socketCliente.getInputStream())
             );
@@ -27,7 +38,7 @@ public class App
             String mensaje = entrada.readLine();
             System.out.println("Cliente dice: " + mensaje);
 
-            // Responder
+            // Responder al cliente
             salida.println("Hola cliente");
 
             socketCliente.close();

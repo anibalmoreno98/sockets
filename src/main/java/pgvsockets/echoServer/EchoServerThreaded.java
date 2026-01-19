@@ -3,7 +3,17 @@ package pgvsockets.echoServer;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * Servidor Echo multihilo. Escucha en el puerto 1234 y crea un hilo por cada cliente conectado.
+ */
 public class EchoServerThreaded {
+
+    /**
+     * Método principal del servidor. Acepta conexiones entrantes y lanza un hilo
+     * ClientHandler para cada cliente.
+     *
+     * @param args No se utilizan argumentos de línea de comandos.
+     */
     public static void main(String[] args) {
         try (ServerSocket server = new ServerSocket(1234)) {
             System.out.println("Servidor Echo MULTIHILO escuchando en el puerto 1234...");

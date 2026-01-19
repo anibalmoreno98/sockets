@@ -5,8 +5,22 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+ * Cliente para el servidor de chat simple.
+ * <p>
+ * Se conecta al servidor, envía mensajes escritos por el usuario y muestra
+ * los mensajes recibidos del resto de clientes en tiempo real.
+ * </p>
+ */
 public class ChatCliente {
 
+    /**
+     * Método principal del cliente. Establece conexión con el servidor,
+     * lanza un hilo para escuchar mensajes entrantes y permite al usuario
+     * enviar mensajes desde consola.
+     *
+     * @param args No se utilizan argumentos de línea de comandos.
+     */
     public static void main(String[] args) {
         try {
             Socket socket = new Socket("localhost", 1234);

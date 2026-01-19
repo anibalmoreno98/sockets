@@ -5,7 +5,18 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+ * Cliente para el servidor Echo. Permite enviar mensajes al servidor y recibir respuestas.
+ * Finaliza cuando el usuario escribe "salir".
+ */
 public class EchoCliente {
+
+    /**
+     * Método principal del cliente. Establece conexión con el servidor Echo,
+     * envía mensajes desde consola y muestra las respuestas.
+     *
+     * @param args No se utilizan argumentos de línea de comandos.
+     */
     public static void main(String[] args) {
         try (
             Socket socket = new Socket("localhost", 1234);

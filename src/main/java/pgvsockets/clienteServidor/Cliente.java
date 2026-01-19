@@ -5,10 +5,21 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class Cliente 
-{
-    public static void main(String[] args)
-    {
+/**
+ * Cliente simple que se conecta al servidor en el puerto 5555.
+ * <p>
+ * Envía un mensaje inicial al servidor y muestra la respuesta recibida.
+ * </p>
+ */
+public class Cliente {
+
+    /**
+     * Método principal del cliente. Establece conexión con el servidor,
+     * envía un mensaje y espera la respuesta.
+     *
+     * @param args No se utilizan argumentos de línea de comandos.
+     */
+    public static void main(String[] args) {
         try {
             Socket socket = new Socket("localhost", 5555);
             System.out.println("Conectado al servidor");
@@ -21,7 +32,7 @@ public class Cliente
             // Enviar mensaje al servidor
             salida.println("Hola servidor");
 
-            // Leer respuesta
+            // Leer respuesta del servidor
             String respuesta = entrada.readLine();
             System.out.println("Servidor dice: " + respuesta);
 
