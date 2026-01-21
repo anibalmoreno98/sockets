@@ -25,8 +25,8 @@ public class ChatServer {
      * @param args No se utilizan argumentos de línea de comandos.
      */
     public static void main(String[] args) {
-        try (ServerSocket server = new ServerSocket(1234)) {
-            System.out.println("Servidor de chat escuchando en el puerto 1234...");
+        try (ServerSocket server = new ServerSocket(1234)) {                                  // ifconfig -- mi compañero pone mi ip("172.30.131.37, 1234")
+            System.out.println("Servidor de chat escuchando en el puerto 1234...");              // para conectarse a mi servidor
 
             while (true) {
                 Socket socketCliente = server.accept();
