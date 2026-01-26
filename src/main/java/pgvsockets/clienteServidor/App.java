@@ -23,7 +23,7 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            ServerSocket socketServidor = new ServerSocket(5555);
+            ServerSocket socketServidor = new ServerSocket(5555);        // java pide al SO abrir una estructura interna que representa un socket TCP
             System.out.println("Servidor escuchando en el puerto 5555...");
 
             Socket socketCliente = socketServidor.accept();

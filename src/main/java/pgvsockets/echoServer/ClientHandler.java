@@ -36,7 +36,7 @@ public class ClientHandler extends Thread {
             String mensaje;
             while ((mensaje = entrada.readLine()) != null) {
                 System.out.println("Cliente dijo: " + mensaje);
-                salida.println(mensaje); // Echo
+                salida.println(mensaje);
             }
 
         } catch (Exception e) {

@@ -24,7 +24,7 @@ public class FileCliente {
     public static void main(String[] args) {
         try {
             Scanner sc = new Scanner(System.in);
-            System.out.print("Ruta del archivo a enviar: ");
+            System.out.print("Ruta del archivo a enviar: ");             // enviar: servidor.jks
             String ruta = sc.nextLine();
 
             File archivo = new File(ruta);

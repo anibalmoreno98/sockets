@@ -20,7 +20,7 @@ public class EchoCliente {
     public static void main(String[] args) {
         try (
             Socket socket = new Socket("localhost", 1234);
-            BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+            BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));     // comando para el segundo cliente: java -cp target/classes pgvsockets.echoServer.EchoCliente
             PrintWriter salida = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()))
         ) {
