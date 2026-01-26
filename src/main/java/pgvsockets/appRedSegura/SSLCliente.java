@@ -3,25 +3,11 @@ package pgvsockets.appRedSegura;
 import javax.net.ssl.*;
 import java.io.*;
 
-/**
- * Cliente SSL simple que se conecta a un servidor seguro en el puerto 6000.
- * <p>
- * Este cliente utiliza un {@link TrustManager} permisivo que acepta cualquier
- * certificado sin validación. Esto facilita las pruebas locales, pero no debe
- * usarse en entornos reales por motivos de seguridad.
- * </p>
- */
 public class SSLCliente {
 
-    /**
-     * Método principal del cliente SSL. Establece un contexto TLS,
-     * crea un socket seguro y envía un mensaje al servidor.
-     *
-     * @param args No se utilizan argumentos de línea de comandos.
-     */
     public static void main(String[] args) {
         try {
-            // Crear contexto SSL con TrustManager que acepta cualquier certificado
+            // TrustManager permisivo (solo para pruebas)
             SSLContext sc = SSLContext.getInstance("TLS");
             sc.init(null, new TrustManager[]{new X509TrustManager() {
                 public java.security.cert.X509Certificate[] getAcceptedIssuers() { return null; }
@@ -35,15 +21,27 @@ public class SSLCliente {
 
             System.out.println("Conectado al servidor SSL");
 
+            BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
             PrintWriter salida = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            // Enviar mensaje al servidor
-            salida.println("Hola servidor seguro");
+            String mensaje;
 
-            // Leer respuesta
-            String respuesta = entrada.readLine();
-            System.out.println("Servidor respondió: " + respuesta);
+            // Bucle interactivo
+            while (true) {
+                System.out.print("Tú: ");
+                mensaje = teclado.readLine();
+
+                salida.println(mensaje);
+
+                if (mensaje.equalsIgnoreCase("salir")) {
+                    System.out.println("Cerrando conexión...");
+                    break;
+                }
+
+                String respuesta = entrada.readLine();
+                System.out.println("Servidor: " + respuesta);
+            }
 
             socket.close();
 
