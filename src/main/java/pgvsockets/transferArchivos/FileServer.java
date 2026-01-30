@@ -30,7 +30,7 @@ public class FileServer {
 
                 InputStream entrada = socket.getInputStream();
 
-                // Nombre fijo; se puede mejorar generando nombres únicos
+                // Nombre fijo para el archivo
                 String nombreArchivo = "archivo_recibido";
 
                 // Guardar archivo en la carpeta del servidor

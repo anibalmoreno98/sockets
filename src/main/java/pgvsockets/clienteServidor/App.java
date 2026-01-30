@@ -26,13 +26,11 @@ public class App {
             ServerSocket socketServidor = new ServerSocket(5555);        // java pide al SO abrir una estructura interna que representa un socket TCP
             System.out.println("Servidor escuchando en el puerto 5555...");
 
-            Socket socketCliente = socketServidor.accept();
+            Socket socketCliente = socketServidor.accept(); // bloquea (se detiene hasta que ocurra algo) aceptas las conexiones entrantes
             System.out.println("Cliente conectado");
 
-            PrintWriter salida = new PrintWriter(socketCliente.getOutputStream(), true);
-            BufferedReader entrada = new BufferedReader(
-                new InputStreamReader(socketCliente.getInputStream())
-            );
+            PrintWriter salida = new PrintWriter(socketCliente.getOutputStream(), true); // creas un flujo de salida que envía el texto al cliente a traves del socket
+            BufferedReader entrada = new BufferedReader(new InputStreamReader(socketCliente.getInputStream())); // crea un lector para recibir el texto
 
             // Leer mensaje del cliente
             String mensaje = entrada.readLine();

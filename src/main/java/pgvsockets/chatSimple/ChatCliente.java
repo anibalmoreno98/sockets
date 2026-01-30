@@ -26,9 +26,9 @@ public class ChatCliente {
             Socket socket = new Socket("localhost", 1234);
             System.out.println("Conectado al chat");
 
-            BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
-            PrintWriter salida = new PrintWriter(socket.getOutputStream(), true);
-            BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in)); // crea lector para leer por teclado
+            PrintWriter salida = new PrintWriter(socket.getOutputStream(), true); // crea un escritor que envia texto al servidor a traves del socket
+            BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream())); // crea un lector que escucha mensajes que el servidor envia
 
             // Hilo para escuchar mensajes del servidor
             Thread listener = new Thread(() -> {

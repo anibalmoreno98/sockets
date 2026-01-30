@@ -21,13 +21,11 @@ public class Cliente {
      */
     public static void main(String[] args) {
         try {
-            Socket socket = new Socket("localhost", 5555);
+            Socket socket = new Socket("localhost", 5555); // crea el socket y se conecta
             System.out.println("Conectado al servidor");
 
-            PrintWriter salida = new PrintWriter(socket.getOutputStream(), true);
-            BufferedReader entrada = new BufferedReader(
-                new InputStreamReader(socket.getInputStream())
-            );
+            PrintWriter salida = new PrintWriter(socket.getOutputStream(), true); // crea un flujo de salida envía a través del socket
+            BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream())); // crea un lector para recibir el texto
 
             // Enviar mensaje al servidor
             salida.println("Hola servidor");

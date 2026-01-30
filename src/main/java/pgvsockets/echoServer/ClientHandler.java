@@ -34,7 +34,7 @@ public class ClientHandler extends Thread {
             PrintWriter salida = new PrintWriter(socket.getOutputStream(), true)
         ) {
             String mensaje;
-            while ((mensaje = entrada.readLine()) != null) {
+            while ((mensaje = entrada.readLine()) != null) {    // lee lo que manda el cliente hasta que cierre la conexión y devuelva null
                 System.out.println("Cliente dijo: " + mensaje);
                 salida.println(mensaje);
             }

@@ -15,11 +15,11 @@ public class EchoServerThreaded {
      * @param args No se utilizan argumentos de línea de comandos.
      */
     public static void main(String[] args) {
-        try (ServerSocket server = new ServerSocket(1234)) {
+        try (ServerSocket server = new ServerSocket(1234)) {            // abres un serversocket
             System.out.println("Servidor Echo MULTIHILO escuchando en el puerto 1234...");
 
             while (true) {
-                Socket cliente = server.accept();
+                Socket cliente = server.accept();                           // bloquea hasta que un cliente se conecta
                 System.out.println("Cliente conectado desde " + cliente.getInetAddress());
 
                 // Crear y lanzar un hilo para atender al cliente
